@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@reduxjs/toolkit':
+    specifier: ^2.8.2
+    version: 2.8.2(react-redux@9.2.0)(react@19.1.0)
   react:
     specifier: ^19.1.0
     version: 19.1.0
@@ -13,7 +16,7 @@ dependencies:
     version: 19.1.0(react@19.1.0)
   react-redux:
     specifier: ^9.2.0
-    version: 9.2.0(@types/react@19.1.5)(react@19.1.0)
+    version: 9.2.0(@types/react@19.1.5)(react@19.1.0)(redux@5.0.1)
   react-router:
     specifier: ^7.6.0
     version: 7.6.0(react-dom@19.1.0)(react@19.1.0)
@@ -587,6 +590,27 @@ packages:
       '@jridgewell/sourcemap-codec': 1.5.0
     dev: true
 
+  /@reduxjs/toolkit@2.8.2(react-redux@9.2.0)(react@19.1.0):
+    resolution: {integrity: sha512-MYlOhQ0sLdw4ud48FoC5w0dH9VfWQjtCjreKwYTT3l+r427qYC5Y8PihNutepr8XrNaBUDQo9khWUwQxZaqt5A==}
+    peerDependencies:
+      react: ^16.9.0 || ^17.0.0 || ^18 || ^19
+      react-redux: ^7.2.1 || ^8.1.3 || ^9.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-redux:
+        optional: true
+    dependencies:
+      '@standard-schema/spec': 1.0.0
+      '@standard-schema/utils': 0.3.0
+      immer: 10.1.1
+      react: 19.1.0
+      react-redux: 9.2.0(@types/react@19.1.5)(react@19.1.0)(redux@5.0.1)
+      redux: 5.0.1
+      redux-thunk: 3.1.0(redux@5.0.1)
+      reselect: 5.1.1
+    dev: false
+
   /@rolldown/pluginutils@1.0.0-beta.9:
     resolution: {integrity: sha512-e9MeMtVWo186sgvFFJOPGy7/d2j2mZhLJIdVW0C/xDluuOvymEATqz6zKsP0ZmXGzQtqlyjz5sC1sYQUoJG98w==}
     dev: true
@@ -750,6 +774,14 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@standard-schema/spec@1.0.0:
+    resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
+    dev: false
+
+  /@standard-schema/utils@0.3.0:
+    resolution: {integrity: sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==}
+    dev: false
 
   /@types/babel__core@7.20.5:
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -1206,6 +1238,10 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
+  /immer@10.1.1:
+    resolution: {integrity: sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==}
+    dev: false
+
   /import-fresh@3.3.1:
     resolution: {integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==}
     engines: {node: '>=6'}
@@ -1405,7 +1441,7 @@ packages:
       scheduler: 0.26.0
     dev: false
 
-  /react-redux@9.2.0(@types/react@19.1.5)(react@19.1.0):
+  /react-redux@9.2.0(@types/react@19.1.5)(react@19.1.0)(redux@5.0.1):
     resolution: {integrity: sha512-ROY9fvHhwOD9ySfrF0wmvu//bKCQ6AeZZq1nJNtbDC+kk5DuSuNX/n6YWYF/SYy7bSba4D4FSz8DJeKY/S/r+g==}
     peerDependencies:
       '@types/react': ^18.2.25 || ^19
@@ -1420,6 +1456,7 @@ packages:
       '@types/react': 19.1.5
       '@types/use-sync-external-store': 0.0.6
       react: 19.1.0
+      redux: 5.0.1
       use-sync-external-store: 1.5.0(react@19.1.0)
     dev: false
 
@@ -1459,6 +1496,22 @@ packages:
   /react@19.1.0:
     resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  /redux-thunk@3.1.0(redux@5.0.1):
+    resolution: {integrity: sha512-NW2r5T6ksUKXCabzhL9z+h206HQw/NJkcLm1GPImRQ8IzfXwRGqjVhKJGauHirT0DAuyy6hjdnMZaRoAcy0Klw==}
+    peerDependencies:
+      redux: ^5.0.0
+    dependencies:
+      redux: 5.0.1
+    dev: false
+
+  /redux@5.0.1:
+    resolution: {integrity: sha512-M9/ELqF6fy8FwmkpnF0S3YKOqMyoWJ4+CS5Efg2ct3oY9daQvd/Pc71FpGZsVsbl3Cpb+IIcjBDUnnyBdQbq4w==}
+    dev: false
+
+  /reselect@5.1.1:
+    resolution: {integrity: sha512-K/BG6eIky/SBpzfHZv/dd+9JBFiS4SWV7FIujVyJRux6e45+73RaUHXLmIR1f7WOMaQ0U1km6qwklRQxpJJY0w==}
     dev: false
 
   /resolve-from@4.0.0:
