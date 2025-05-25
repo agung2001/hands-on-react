@@ -7,8 +7,8 @@ import { memo } from 'react'; // for memoization
  * @returns {React.Component}
  */
 const Button = memo(({ onClick, className = '', children }) => {
-  const defaultClasses =
-    'cursor-pointer bg-blue-500 text-white px-6 py-2 mr-2 shadow-md rounded-md';
+  const defaultClasses = 'cursor-pointer px-6 py-2 mr-2 shadow-md rounded-md';
+
   const combinedClasses = className ? `${defaultClasses} ${className}` : defaultClasses;
 
   return (

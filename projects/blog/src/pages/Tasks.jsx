@@ -77,7 +77,9 @@ function Tasks() {
             placeholder="Enter task title"
             className="border border-gray-300 px-4 py-2 rounded"
           />
-          <Button type="submit">Add Task</Button>
+          <Button type="submit" className="bg-blue-500">
+            Add Task
+          </Button>
         </form>
       </div>
 
@@ -97,19 +99,19 @@ function Tasks() {
         <div className="flex gap-2">
           <Button
             onClick={() => dispatch(setFilterAction('all'))}
-            className="bg-gray-100 text-black"
+            className="font-bold bg-gray-100 text-black"
           >
             All
           </Button>
           <Button
             onClick={() => dispatch(setFilterAction('completed'))}
-            className="bg-gray-100 text-black"
+            className="font-bold bg-gray-100 text-black"
           >
             Completed
           </Button>
           <Button
             onClick={() => dispatch(setFilterAction('incomplete'))}
-            className="bg-gray-100 text-black"
+            className="font-bold bg-gray-100 text-black"
           >
             Incomplete
           </Button>
