@@ -1,3 +1,5 @@
+![](screenshot.png)
+
 # Hands on React
 
 ## How to initiate new react project
