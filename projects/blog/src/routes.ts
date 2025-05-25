@@ -1,4 +1,5 @@
 import Home from './pages/Home';
+import Posts from './pages/Posts';
 // import Modals from './components/pages/Modals';
 // import NotFound from './components/pages/NotFound';
 // import Post from './components/pages/Post';
@@ -8,17 +9,11 @@ import Home from './pages/Home';
 
 const routes = [
   {
-    name: 'Home',
+    name: 'Posts',
     path: '/',
-    element: Home,
+    element: Posts,
     isMenu: true,
   },
-  //   {
-  //     name: 'Posts',
-  //     path: '/',
-  //     element: Posts,
-  //     isMenu: true,
-  //   },
   //   {
   //     name: 'Post',
   //     path: '/post/:id',
