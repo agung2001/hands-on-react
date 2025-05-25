@@ -10,11 +10,11 @@
 3. Create a new React project using Vite:
    ```bash
    cd projects
-   pnpm create vite my-react-app --template react
+   pnpm create vite {ProjectName} --template react
    ```
 4. Navigate to your project directory:
    ```bash
-   cd my-react-app
+   cd {ProjectName}
    ```
 5. Install dependencies:
    ```bash
