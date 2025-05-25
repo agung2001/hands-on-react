@@ -1,9 +1,9 @@
 import Home from './pages/Home';
 import Posts from './pages/Posts';
+import Post from './pages/Post';
+
 // import Modals from './components/pages/Modals';
 // import NotFound from './components/pages/NotFound';
-// import Post from './components/pages/Post';
-// import Posts from './components/pages/Posts';
 // import Samples from './components/pages/Samples';
 // import Tasks from './components/pages/Tasks';
 
@@ -14,12 +14,12 @@ const routes = [
     element: Posts,
     isMenu: true,
   },
-  //   {
-  //     name: 'Post',
-  //     path: '/post/:id',
-  //     element: Post,
-  //     isMenu: false,
-  //   },
+  {
+    name: 'Post',
+    path: '/post/:id',
+    element: Post,
+    isMenu: false,
+  },
   //   {
   //     name: 'Modals',
   //     path: '/modals',
