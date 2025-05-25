@@ -1,5 +1,6 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import routes from './routes';
 
 function App() {
   return (
@@ -8,9 +9,11 @@ function App() {
         <Navbar />
 
         <div className="max-w-7xl mx-auto py-4 px-8 mt-8 z-10 bg-white shadow-xl rounded-md">
-          <h1>Blog</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+          <Routes>
+            {routes.map((route) => (
+              <Route key={route.path} path={route.path} element={<route.element />} />
+            ))}
+          </Routes>
         </div>
       </div>
     </BrowserRouter>

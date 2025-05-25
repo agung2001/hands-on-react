@@ -1,3 +1,4 @@
+import Home from './pages/Home';
 // import Modals from './components/pages/Modals';
 // import NotFound from './components/pages/NotFound';
 // import Post from './components/pages/Post';
@@ -6,6 +7,12 @@
 // import Tasks from './components/pages/Tasks';
 
 const routes = [
+  {
+    name: 'Home',
+    path: '/',
+    element: Home,
+    isMenu: true,
+  },
   //   {
   //     name: 'Posts',
   //     path: '/',
