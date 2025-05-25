@@ -67,7 +67,9 @@ function Modals() {
                 <div>Copyright {new Date().getFullYear()} by Agung Sundoro</div>
               </Modal>
             )}
-            <Button onClick={() => handleOpenModal(index)}>Open {modal.title}</Button>
+            <Button onClick={() => handleOpenModal(index)} className="bg-blue-500">
+              Open {modal.title}
+            </Button>
           </div>
         ))}
       </div>

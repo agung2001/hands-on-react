@@ -1,5 +1,6 @@
 import Home from './pages/Home';
 import Modals from './pages/Modals';
+import NotFound from './pages/NotFound';
 import Posts from './pages/Posts';
 import Post from './pages/Post';
 import Sample from './pages/Sample';
@@ -36,12 +37,12 @@ const routes = [
     element: Sample,
     isMenu: true,
   },
-  //   {
-  //     name: 'NotFound',
-  //     path: '*',
-  //     element: NotFound,
-  //     isMenu: false,
-  //   },
+  {
+    name: 'NotFound',
+    path: '*',
+    element: NotFound,
+    isMenu: false,
+  },
 ];
 
 export default routes;
