@@ -1,10 +1,19 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '../library/Button';
+import {
+  addTask,
+  toggleTask,
+  deleteTask,
+  loadTasks as loadTasksAction,
+  resetTasks as resetTasksAction,
+  setFilter as setFilterAction,
+} from '../store/actions/tasksActions';
 
 function Tasks() {
-  const [tasks, setTasks] = useState([]);
+  const dispatch = useDispatch();
+  const tasks = useSelector((state) => state.tasks.tasks);
+  const filter = useSelector((state) => state.tasks.filter);
   const [newTask, setNewTask] = useState('');
-  const [filter, setFilter] = useState('all');
 
   const totalTasks = tasks.length;
   const totalCompletedTasks = tasks.filter((task) => task.completed).length;
@@ -13,40 +22,30 @@ function Tasks() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!newTask.trim()) return;
-
-    setTasks([
-      ...tasks,
-      {
-        id: Date.now(),
-        title: newTask,
-        completed: false,
-      },
-    ]);
+    dispatch(addTask(newTask));
     setNewTask('');
   };
 
-  const toggleTask = (id) => {
-    setTasks(
-      tasks.map((task) => (task.id === id ? { ...task, completed: !task.completed } : task))
-    );
+  const handleToggleTask = (id) => {
+    dispatch(toggleTask(id));
   };
 
-  const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
+  const handleDeleteTask = (id) => {
+    dispatch(deleteTask(id));
   };
 
   const loadTasks = async () => {
     try {
       const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=5');
       const data = await response.json();
-      setTasks(data);
+      dispatch(loadTasksAction(data));
     } catch (error) {
       console.error('Error loading tasks:', error);
     }
   };
 
   const resetTasks = () => {
-    setTasks([]);
+    dispatch(resetTasksAction());
   };
 
   const filteredTasks = tasks.filter((task) => {
@@ -95,13 +94,22 @@ function Tasks() {
         </div>
 
         <div className="flex gap-2">
-          <Button onClick={() => setFilter('all')} className="bg-gray-100 text-black">
+          <Button
+            onClick={() => dispatch(setFilterAction('all'))}
+            className="bg-gray-100 text-black"
+          >
             All
           </Button>
-          <Button onClick={() => setFilter('completed')} className="bg-gray-100 text-black">
+          <Button
+            onClick={() => dispatch(setFilterAction('completed'))}
+            className="bg-gray-100 text-black"
+          >
             Completed
           </Button>
-          <Button onClick={() => setFilter('incomplete')} className="bg-gray-100 text-black">
+          <Button
+            onClick={() => dispatch(setFilterAction('incomplete'))}
+            className="bg-gray-100 text-black"
+          >
             Incomplete
           </Button>
         </div>
@@ -114,13 +122,13 @@ function Tasks() {
             className={`cursor-pointer p-4 rounded-md flex justify-between ${
               task.completed ? 'bg-green-500' : 'bg-yellow-500'
             }`}
-            onClick={() => toggleTask(task.id)}
+            onClick={() => handleToggleTask(task.id)}
           >
             <h2>{task.title}</h2>
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                deleteTask(task.id);
+                handleDeleteTask(task.id);
               }}
               className="bg-red-500 text-white px-4 py-2"
             >
