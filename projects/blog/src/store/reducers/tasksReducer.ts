@@ -5,7 +5,7 @@ import {
   LOAD_TASKS,
   RESET_TASKS,
   SET_FILTER,
-} from '../actions/tasksActionsRedux';
+} from '../actions/tasksActions';
 
 // Task Reducer
 export type Task = {

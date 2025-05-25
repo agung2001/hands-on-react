@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { taskReducer } from '../reducers/tasksReducerRedux';
+import { taskReducer } from '../reducers/tasksReducer';
 
 /**
  * The store is the central state management for the application.

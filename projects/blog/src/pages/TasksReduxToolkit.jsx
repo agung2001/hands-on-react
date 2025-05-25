@@ -8,7 +8,7 @@ import {
   loadTasks as loadTasksAction,
   resetTasks as resetTasksAction,
   setFilter as setFilterAction,
-} from '../store/actions/tasksActionsRedux';
+} from '../store/actions/tasksActions';
 
 function TasksReduxToolkit() {
   const dispatch = useDispatch();
