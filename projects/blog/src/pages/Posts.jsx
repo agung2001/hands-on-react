@@ -1,6 +1,11 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * A component that displays a list of posts.
+ *
+ * @returns {React.Component}
+ */
 class Posts extends Component {
   constructor(props) {
     super(props);

@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import Modal from '../library/Modal';
+import Button from '../library/Button';
 
+/**
+ * A component that displays a list of modals.
+ *
+ * @returns {React.Component}
+ */
 function Modals() {
   const [modals, setModals] = useState([
     {
@@ -61,12 +67,7 @@ function Modals() {
                 <div>Copyright {new Date().getFullYear()} by Agung Sundoro</div>
               </Modal>
             )}
-            <button
-              onClick={() => handleOpenModal(index)}
-              className="cursor-pointer bg-blue-500 text-white px-6 py-2 mr-2 shadow-md rounded-md"
-            >
-              Open {modal.title}
-            </button>
+            <Button onClick={() => handleOpenModal(index)}>Open {modal.title}</Button>
           </div>
         ))}
       </div>

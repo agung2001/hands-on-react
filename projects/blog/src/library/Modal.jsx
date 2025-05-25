@@ -1,5 +1,11 @@
 import { Component } from 'react';
 
+/**
+ * A component that displays a modal.
+ *
+ * @param {React.Component} Component
+ * @returns {React.Component}
+ */
 class Modal extends Component {
   constructor(props) {
     super(props);
