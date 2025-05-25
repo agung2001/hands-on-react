@@ -9,23 +9,19 @@ import {
   setFilter as setFilterAction,
 } from '../store/actions/tasksActions';
 import { taskReducer, initialState } from '../store/reducers/tasksReducer';
+import { useAddTaskForm } from '../utils/useTask';
 
 function Tasks() {
   const [state, dispatch] = useReducer(taskReducer, initialState);
   const tasks = state.tasks;
   const filter = state.filter;
-  const [newTask, setNewTask] = useState('');
+  const { newTask, handleAddTaskSubmit, handleAddTaskChange } = useAddTaskForm((newTask) =>
+    dispatch(addTask(newTask))
+  );
 
   const totalTasks = tasks.length;
   const totalCompletedTasks = tasks.filter((task) => task.completed).length;
   const totalIncompleteTasks = tasks.filter((task) => !task.completed).length;
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!newTask.trim()) return;
-    dispatch(addTask(newTask));
-    setNewTask('');
-  };
 
   const handleToggleTask = (id) => {
     dispatch(toggleTask(id));
@@ -69,10 +65,10 @@ function Tasks() {
       <h1 className="text-4xl font-bold py-4">Tasks</h1>
 
       <div className="flex gap-2 py-2 justify-between">
-        <form onSubmit={handleSubmit} className="flex gap-2">
+        <form onSubmit={handleAddTaskSubmit} className="flex gap-2">
           <input
             value={newTask}
-            onChange={(e) => setNewTask(e.target.value)}
+            onChange={handleAddTaskChange}
             type="text"
             placeholder="Enter task title"
             className="border border-gray-300 px-4 py-2 rounded"
