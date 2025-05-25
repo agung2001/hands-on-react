@@ -1,20 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import Button from '../library/Button';
-import {
-  addTask,
-  toggleTask,
-  deleteTask,
-  loadTasks as loadTasksAction,
-  resetTasks as resetTasksAction,
-  setFilter as setFilterAction,
-} from '../store/actions/tasksActions';
 
 function Tasks() {
-  const dispatch = useDispatch();
-  const tasks = useSelector((state) => state.tasks.tasks);
-  const filter = useSelector((state) => state.tasks.filter);
+  const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
+  const [filter, setFilter] = useState('all');
 
   const totalTasks = tasks.length;
   const totalCompletedTasks = tasks.filter((task) => task.completed).length;
@@ -23,30 +13,39 @@ function Tasks() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!newTask.trim()) return;
-    dispatch(addTask(newTask));
+    setTasks([
+      ...tasks,
+      {
+        id: Date.now(),
+        title: newTask,
+        completed: false,
+      },
+    ]);
     setNewTask('');
   };
 
   const handleToggleTask = (id) => {
-    dispatch(toggleTask(id));
+    setTasks(
+      tasks.map((task) => (task.id === id ? { ...task, completed: !task.completed } : task))
+    );
   };
 
   const handleDeleteTask = (id) => {
-    dispatch(deleteTask(id));
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
   const loadTasks = async () => {
     try {
       const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=5');
       const data = await response.json();
-      dispatch(loadTasksAction(data));
+      setTasks(data);
     } catch (error) {
       console.error('Error loading tasks:', error);
     }
   };
 
   const resetTasks = () => {
-    dispatch(resetTasksAction());
+    setTasks([]);
   };
 
   const filteredTasks = tasks.filter((task) => {
@@ -97,20 +96,17 @@ function Tasks() {
         </div>
 
         <div className="flex gap-2">
-          <Button
-            onClick={() => dispatch(setFilterAction('all'))}
-            className="font-bold bg-gray-100 text-black"
-          >
+          <Button onClick={() => setFilter('all')} className="font-bold bg-gray-100 text-black">
             All
           </Button>
           <Button
-            onClick={() => dispatch(setFilterAction('completed'))}
+            onClick={() => setFilter('completed')}
             className="font-bold bg-gray-100 text-black"
           >
             Completed
           </Button>
           <Button
-            onClick={() => dispatch(setFilterAction('incomplete'))}
+            onClick={() => setFilter('incomplete')}
             className="font-bold bg-gray-100 text-black"
           >
             Incomplete

@@ -10,7 +10,7 @@ import {
   setFilter as setFilterAction,
 } from '../store/actions/tasksActions';
 
-function Tasks() {
+function TasksReduxToolkit() {
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.tasks.tasks);
   const filter = useSelector((state) => state.tasks.filter);
@@ -144,4 +144,4 @@ function Tasks() {
   );
 }
 
-export default Tasks;
+export default TasksReduxToolkit;
