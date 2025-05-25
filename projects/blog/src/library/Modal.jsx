@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { createPortal } from 'react-dom'; // for rendering the modal in the DOM
 
 /**
  * A component that displays a modal.
@@ -12,6 +13,7 @@ class Modal extends Component {
     this.state = {
       showModal: false,
     };
+    this.modalRoot = document.querySelector('.modals');
   }
 
   componentDidMount() {
@@ -36,7 +38,7 @@ class Modal extends Component {
     const { modal, onClose, onRandomize, children } = this.props;
     const { showModal } = this.state;
 
-    return (
+    const modalContent = (
       <div
         className="backdrop"
         onClick={(e) => {
@@ -72,6 +74,8 @@ class Modal extends Component {
         )}
       </div>
     );
+
+    return createPortal(modalContent, this.modalRoot);
   }
 }
 
