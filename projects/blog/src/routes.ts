@@ -2,6 +2,7 @@ import Home from './pages/Home';
 import Modals from './pages/Modals';
 import Posts from './pages/Posts';
 import Post from './pages/Post';
+import Tasks from './pages/Tasks';
 
 // import Modals from './components/pages/Modals';
 // import NotFound from './components/pages/NotFound';
@@ -27,12 +28,12 @@ const routes = [
     element: Modals,
     isMenu: true,
   },
-  //   {
-  //     name: 'Tasks',
-  //     path: '/tasks',
-  //     element: Tasks,
-  //     isMenu: true,
-  //   },
+  {
+    name: 'Tasks',
+    path: '/tasks',
+    element: Tasks,
+    isMenu: true,
+  },
   //   {
   //     name: 'Samples',
   //     path: '/samples',
