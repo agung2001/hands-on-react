@@ -1,3 +1,4 @@
+import config from './config.json';
 import Home from './pages/Home';
 import Modals from './pages/Modals';
 import NotFound from './pages/NotFound';
@@ -33,12 +34,6 @@ const routes = [
     isMenu: true,
   },
   {
-    name: 'Tasks Redux Toolkit',
-    path: '/tasks-redux-toolkit',
-    element: TasksReduxToolkit,
-    isMenu: true,
-  },
-  {
     name: 'Samples',
     path: '/samples',
     element: Sample,
@@ -52,4 +47,15 @@ const routes = [
   },
 ];
 
-export default routes;
+// Tasks with redux toolkit
+const routesReduxToolkit = [
+  ...routes,
+  {
+    name: 'Tasks Redux Toolkit',
+    path: '/tasks-redux-toolkit',
+    element: TasksReduxToolkit,
+    isMenu: true,
+  },
+];
+
+export default config.enableReduxToolkit ? routesReduxToolkit : routes;
