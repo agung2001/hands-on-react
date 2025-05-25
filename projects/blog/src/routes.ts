@@ -5,6 +5,7 @@ import Posts from './pages/Posts';
 import Post from './pages/Post';
 import Sample from './pages/Sample';
 import Tasks from './pages/Tasks';
+import TasksReduxToolkit from './pages/TasksReduxToolkit';
 
 const routes = [
   {
@@ -29,6 +30,12 @@ const routes = [
     name: 'Tasks',
     path: '/tasks',
     element: Tasks,
+    isMenu: true,
+  },
+  {
+    name: 'Tasks Redux Toolkit',
+    path: '/tasks-redux-toolkit',
+    element: TasksReduxToolkit,
     isMenu: true,
   },
   {
