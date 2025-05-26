@@ -21,15 +21,17 @@ class Sample extends Component {
       <div>
         <h1 className="text-4xl font-bold py-4">Samples</h1>
 
-        <Carousel delay={1000}>
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>
-          <div>4</div>
-          <div>5</div>
-        </Carousel>
-        <Reference />
-        <Watch />
+        <div className="grid grid-cols-3 gap-4">
+          <Carousel delay={1000}>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+          </Carousel>
+          <Reference />
+          <Watch />
+        </div>
       </div>
     );
   }

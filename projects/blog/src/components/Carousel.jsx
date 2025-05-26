@@ -1,4 +1,4 @@
-import React, { Children, Component, useRef, useState, useEffect } from 'react';
+import { Children, useRef, useState, useEffect } from 'react';
 
 /**
  * A component that displays a watch.
@@ -7,10 +7,10 @@ import React, { Children, Component, useRef, useState, useEffect } from 'react';
  */
 const Carousel = ({ delay, children }) => {
   // Normalize children.
-  const childrenArray = React.Children.toArray(children);
+  const childrenArray = Children.toArray(children);
   const totalChildren = childrenArray.length;
 
-  //   // Variables.
+  // Variables.
   const [index, setIndex] = useState(0);
   const timeRef = useRef(null);
 
@@ -25,14 +25,22 @@ const Carousel = ({ delay, children }) => {
     if (totalChildren > 0 && delay > 0) {
       timeRef.current = setInterval(() => {
         setIndex((prevIndex) => (prevIndex + 1) % totalChildren);
-      });
+      }, delay);
     }
   };
 
-  // Start delay.
+  // useEffect for initial timer setup and cleanup
   useEffect(
     () => {
+      // Initial start the timer
       startTimer();
+
+      // Cleanup the timer if the component unmounts and (delay, totalChildren) changes
+      return () => {
+        if (timeRef.current) {
+          clearInterval(timeRef.current);
+        }
+      };
     },
     delay,
     totalChildren
@@ -40,8 +48,6 @@ const Carousel = ({ delay, children }) => {
 
   // HandleNext
   const handleNext = () => {
-    // let nextIndex = (index < (totalChildren-1)) ? index + 1 : 0;
-    // setIndex( nextIndex );
     setIndex((prevIndex) => (prevIndex + 1) % totalChildren);
     startTimer();
   };
@@ -49,8 +55,6 @@ const Carousel = ({ delay, children }) => {
   // HandlePrevious
   const handlePrevious = () => {
     setIndex((prevIndex) => (prevIndex - 1) % totalChildren);
-    // let nextIndex = (index > 0) ? index - 1 : (totalChildren - 1);
-    // setIndex( nextIndex );
     startTimer();
   };
 
@@ -68,16 +72,16 @@ const Carousel = ({ delay, children }) => {
             {2 < totalChildren && (
               <div class="buttons flex gap-2">
                 <button
-                  class="button-next bg-blue-500 text-white px-4 py-2 rounded-md"
-                  onClick={handleNext}
-                >
-                  Next
-                </button>
-                <button
-                  class="button-previous bg-blue-500 text-white px-4 py-2 rounded-md"
+                  class="button-previous bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer"
                   onClick={handlePrevious}
                 >
                   Previous
+                </button>
+                <button
+                  class="button-next bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer"
+                  onClick={handleNext}
+                >
+                  Next
                 </button>
               </div>
             )}
