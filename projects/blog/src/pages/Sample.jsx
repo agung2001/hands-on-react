@@ -1,59 +1,7 @@
-import { Component, useRef, useState } from 'react';
-
-/**
- * A component that displays a reference.
- *
- * @returns {React.Component}
- */
-const Reference = () => {
-  const inputRef = useRef(null);
-
-  const handleClick = () => {
-    console.log(inputRef.current);
-    inputRef.current.classList.add('active');
-    inputRef.current.focus();
-  };
-
-  return (
-    <div>
-      <h2 className="text-2xl font-bold py-4">Reference</h2>
-      <p>This is a reference component</p>
-
-      <div className="flex items-center mt-4">
-        <input
-          type="text"
-          ref={inputRef}
-          className="border-2 border-gray-300 rounded-md p-2 mr-2"
-        />
-        <button onClick={handleClick} className="cursor-pointer bg-blue-500 text-white p-2">
-          Click me
-        </button>
-      </div>
-    </div>
-  );
-};
-
-/**
- * A component that displays a watch.
- *
- * @returns {React.Component}
- */
-const Watch = () => {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div>
-      <h2 className="text-2xl font-bold py-4">Watch</h2>
-      <p>Count: {count}</p>
-      <button
-        className="bg-blue-500 text-white p-2"
-        onClick={() => setCount((prevCount) => prevCount + 1)}
-      >
-        Increment
-      </button>
-    </div>
-  );
-};
+import { Component } from 'react';
+import Carousel from '../components/Carousel';
+import Reference from '../components/Reference';
+import Watch from '../components/Watch';
 
 /**
  * A component that displays sample content.
@@ -73,8 +21,17 @@ class Sample extends Component {
       <div>
         <h1 className="text-4xl font-bold py-4">Samples</h1>
 
-        <Reference />
-        <Watch />
+        <div className="grid grid-cols-3 gap-4">
+          <Carousel delay={1000}>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+          </Carousel>
+          <Reference />
+          <Watch />
+        </div>
       </div>
     );
   }
